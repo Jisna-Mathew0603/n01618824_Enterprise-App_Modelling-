@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Enrollment Confirmation</title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body class="body">
+<div class="container">
+  <header class="header">
+    <h2 class="title">Enrollment Confirmation</h2>
+  </header>
+
+  <section class="confirmation-message card-panel">
+    <p th:text="${message}"></p>
+  </section>
+
+  <div class="center-align">
+    <a href="/" class="action-button">
+      <i class="fas fa-home"></i>
+      Home
+    </a>
+  </div>
+
+ <footer class="footer">
+            <p>&copy; 2025 Jisna N01618824. All rights reserved.</p>
+        </footer>
+</div>
+</body>
+</html>

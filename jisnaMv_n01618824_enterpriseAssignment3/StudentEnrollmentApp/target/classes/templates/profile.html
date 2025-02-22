@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Profile List</title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body class="body">
+    <div class="container">
+        <header class="header">
+            <h2 class="title">My Profile</h2>
+        </header>
+
+        <form th:action="@{/updateProfile}" method="post" th:object="${student}" class="profile-form">
+            <input type="hidden" th:field="*{studentId}" />
+
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" th:field="*{userName}" id="userName" placeholder="Username" readonly>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-user-circle"></i>
+                <input type="text" th:field="*{firstname}" id="firstname" placeholder="First Name" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-user-circle"></i>
+                <input type="text" th:field="*{lastname}" id="lastname" placeholder="Last Name" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-address-card"></i>
+                <input type="text" th:field="*{address}" id="address" placeholder="Address" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-city"></i>
+                <input type="text" th:field="*{city}" id="city" placeholder="City" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-mailbox"></i>
+                <input type="text" th:field="*{postalCode}" id="postalCode" placeholder="Postal Code" required>
+            </div>
+            
+            <input type="hidden" th:field="*{password}" />
+            
+
+            <button type="submit" class="action-button">
+                <i class="fas fa-save"></i>
+                Update Profile
+            </button>
+
+            <p th:if="${message}" th:text="${message}" class="success-message"></p>
+        </form>
+
+        <div class="profile-links">
+            <a th:href="@{/login(userName=${student.userName})}" class="action-button">
+    <i class="fas fa-arrow-left"></i>
+    Back to Programs List
+</a>
+
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 Jisna N01618824. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

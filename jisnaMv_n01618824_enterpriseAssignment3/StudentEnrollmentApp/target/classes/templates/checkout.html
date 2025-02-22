@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Payment Checkout</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body class="body">
+<div class="container">
+  <header class="header">
+    <h2 class="title">Payment Checkout</h2>
+  </header>
+
+  <section class="program-info card-panel">
+    <p><strong>Program:</strong> <span th:text="${program.programName}"></span></p>
+    <p><strong>Fee:</strong> $<span th:text="${program.fee}"></span></p>
+  </section>
+
+  <form th:action="@{/processPayment}" method="post" class="payment-form">
+    <input type="hidden" name="studentId" th:value="${student.studentId}" />
+    <input type="hidden" name="programCode" th:value="${program.programCode}" />
+
+    <div class="input-group">
+      <i class="fas fa-credit-card"></i>
+      <input type="text" name="cardNumber" id="cardNumber"
+             placeholder="Credit Card Number"
+             pattern="[0-9]{16}"
+             title="Please enter a valid 16-digit credit card number"
+             required>
+    </div>
+
+    <div class="input-group">
+      <i class="far fa-calendar-alt"></i>
+      <input type="text" name="expDate" id="expDate"
+             placeholder="Expiration Date (MM/YY)"
+             pattern="(0[1-9]|1[0-2])\/?([0-9]{2})"
+             title="Please enter expiration date in MM/YY format"
+             required>
+    </div>
+
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="text" name="cvv" id="cvv"
+             placeholder="CVV"
+             pattern="[0-9]{3}"
+             title="Please enter a valid 3-digit CVV"
+             required>
+    </div>
+
+    <button type="submit" class="action-button">
+      <i class="fas fa-lock"></i>
+      Pay
+    </button>
+
+    <p th:if="${error}" th:text="${error}" class="error-message"></p>
+  </form>
+
+  <footer class="footer">
+            <p>&copy; 2025 Jisna N01618824. All rights reserved.</p>
+        </footer>
+</div>
+</body>
+</html>

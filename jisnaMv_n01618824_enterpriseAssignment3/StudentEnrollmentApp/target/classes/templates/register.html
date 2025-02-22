@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register - Student Enrollment</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body class="body">
+    <div class="container">
+        <header class="header">
+            <h2 class="title">Register</h2>
+        </header>
+
+        <form th:action="@{/register}" method="post" th:object="${student}" class="register-form">
+
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" th:field="*{userName}" id="userName" placeholder="Username" required />
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" th:field="*{password}" id="password" placeholder="Password" required />
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-user-circle"></i>
+                <input type="text" th:field="*{firstname}" id="firstname" placeholder="First Name" />
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-user-circle"></i>
+                <input type="text" th:field="*{lastname}" id="lastname" placeholder="Last Name" />
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-address-card"></i>
+                <input type="text" th:field="*{address}" id="address" placeholder="Address" />
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-city"></i>
+                <input type="text" th:field="*{city}" id="city" placeholder="City" />
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-mailbox"></i>
+                <input type="text" th:field="*{postalCode}" id="postalCode" placeholder="Postal Code" />
+            </div>
+
+            <button type="submit" class="action-button">
+                <i class="fas fa-user-plus"></i>
+                Register
+            </button>
+
+            <p th:if="${message}" th:text="${message}" class="success-message"></p>
+        </form>
+
+        <div class="register-links">
+            <p>Already have an account? <a href="/loginPage">Login here</a>.</p>
+            <p><a href="/">Back to Home</a></p>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 Jisna N01618824. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

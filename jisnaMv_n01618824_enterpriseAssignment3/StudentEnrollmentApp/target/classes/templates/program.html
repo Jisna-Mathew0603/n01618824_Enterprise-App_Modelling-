@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Select Program</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body class="body">
+    <div class="container">
+        <header class="header">
+            <h2 class="title">Select a Program</h2>
+            <a th:href="@{/profile/{studentId}(studentId=${student.studentId})}" class="profile-button">
+                <i class="fas fa-user"></i>
+                My Profile
+            </a>
+        </header>
+
+        <!-- Section: Currently Enrolled Programs -->
+        <section th:if="${currentEnrollments != null and #lists.size(currentEnrollments) > 0}" class="current-enrollments card-panel">
+            <h3>Currently Enrolled Programs</h3>
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>Program Name</th>
+                        <th>Status</th>
+                        <th>Start Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="enrollment : ${currentEnrollments}">
+                        <td th:text="${enrollment.program.programName}"></td>
+                        <td th:text="${enrollment.status}"></td>
+                        <td th:text="${#dates.format(enrollment.startDate, 'dd/MM/yyyy')}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr/>
+
+        <!-- Form: Select New Program -->
+        <section class="select-program-form">
+            <form th:action="@{/selectProgram}" method="post">
+                <input type="hidden" name="studentId" th:value="${student.studentId}" />
+
+                <div class="input-group">
+                    <i class="fas fa-graduation-cap"></i>
+                    <select name="programCode" required>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option th:each="program : ${programs}"
+                                th:value="${program.programCode}"
+                                th:text="${program.programName}">
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit" class="action-button">
+                    <i class="fas fa-arrow-right"></i>
+                    Proceed to Checkout
+                </button>
+
+                <p th:if="${error}" th:text="${error}" class="error-message"></p>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 Jisna N01618824. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
