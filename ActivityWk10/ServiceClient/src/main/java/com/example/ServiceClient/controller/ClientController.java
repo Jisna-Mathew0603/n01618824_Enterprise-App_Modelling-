@@ -33,7 +33,7 @@ package com.example.ServiceClient.controller;
 	    private RestTemplate restTemplate;
 
 	    public String callServiceProvider(String name) {
-	        List<ServiceInstance> instances = discoveryClient.getInstances("service-provider");
+	        List<ServiceInstance> instances = discoveryClient.getInstances("ServiceProvider");
 
 	        if (instances.isEmpty()) {
 	            return "No instances of service-provider available.";
