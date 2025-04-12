@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f8;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Reservation Form</h1>
+    <form action="#" th:action="@{/reservation}" th:object="${reservation}" method="post">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" th:field="*{fullName}" required/>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" th:field="*{lastName}" required/>
+
+        <label for="numberOfPassengers">Number of Passengers:</label>
+        <input type="number" id="numberOfPassengers" th:field="*{numberOfPassengers}" required/>
+
+        <label for="classType">Class Type:</label>
+        <select id="classType" th:field="*{classType}" required>
+            <option value="Economy">Economy</option>
+            <option value="Business">Business</option>
+        </select>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" th:field="*{phoneNumber}" required/>
+
+        <label for="departureDate">Departure Date:</label>
+        <input type="date" id="departureDate" th:field="*{departureDate}" required/>
+
+        <label for="departureTime">Departure Time:</label>
+        <input type="time" id="departureTime" th:field="*{departureTime}" required/>
+        
+        <label for="flightNumber">Flight Number:</label>
+<input type="text" id="flightNumber" th:field="*{flightNumber}" required/>
+        
+
+        <button type="submit">Submit Reservation</button>
+    </form>
+</body>
+</html>

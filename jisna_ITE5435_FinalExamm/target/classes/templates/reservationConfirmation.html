@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservation Confirmation</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: linear-gradient(to right, #eef2f3, #8e9eab);
+      color: #2c3e50;
+      padding: 60px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #1abc9c;
+      margin-bottom: 10px;
+      font-size: 32px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #34495e;
+      text-align: center;
+    }
+
+    .confirmation-box {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      margin: 12px 0;
+      font-size: 17px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    span {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    a {
+      display: block;
+      margin-top: 30px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #1abc9c;
+      color: white;
+      padding: 14px 0;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #16a085;
+    }
+
+    @media (max-width: 640px) {
+      .confirmation-box {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="confirmation-box">
+    <h1>Reservation Confirmed</h1>
+    <p>Your reservation has been successfully submitted!</p>
+    <p>Reservation Details:</p>
+    <ul>
+      <li>Full Name: <span th:text="${reservation.fullName}"></span></li>
+      <li>Flight Number: <span th:text="${reservation.flightNumber}"></span></li>
+      <li>Class: <span th:text="${reservation.classType}"></span></li>
+      <li>Departure Date: <span th:text="${reservation.departureDate}"></span></li>
+      <li>Departure Time: <span th:text="${reservation.departureTime}"></span></li>
+      <li>Phone Number: <span th:text="${reservation.phoneNumber}"></span></li>
+    </ul>
+    <a href="/reservationForm">Make another Reservation</a>
+  </div>
+</body>
+</html>
